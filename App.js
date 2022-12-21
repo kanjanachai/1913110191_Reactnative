@@ -1,67 +1,25 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 import React from "react";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "./screens/HomeScreen";
-import AboutScreen from "./screens/AboutScreen";
-
-import HomePost from "./screens/HomePost";
-import CreatePost from "./screens/CreatePost";
-
-// import FirstPage from "./screens/FirstPage";
-// import SecondPage from "./screens/SecondPage";
-
-import FirPage from "./pages/FirPage";
-import SecPage from "./pages/SecPage";
-import ThirPage from "./pages/ThirPage";
-
-/* function HomeScreen({navigation}) {
+function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button 
-      title="เกี่ยวกับเรา"
-      onPress={()=> navigation.navigate('About')}/>
+      <Button title="go to notification" />
     </View>
   );
 }
 
-function AboutScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>About Screen</Text>
-    </View>
-  );
-} */
-
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#4b0082",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      >
-        {/* <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} /> */}
-
-        {/* <Stack.Screen name="Home" component={HomePost} />
-        <Stack.Screen name="Create" component={CreatePost} /> */}
-
-        <Stack.Screen name="First Page" component={FirPage} />
-        <Stack.Screen name="Second Page" component={SecPage} />
-        <Stack.Screen name="Third Page" component={ThirPage} />
-      </Stack.Navigator>
+      <Drawer.Navigator useLegacyImplementation>
+        <Drawer.Screen name="Home" component={HomeScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
