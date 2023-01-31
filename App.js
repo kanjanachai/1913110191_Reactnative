@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import HomeScreen from "./screens/HomeScreen"
+import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 import {
   createDrawerNavigator,
@@ -42,7 +43,7 @@ import {
 //   );
 // }
 
-const Tab = createBottomTabNavigator();
+/* const Tab = createBottomTabNavigator();
 
 function MyTabs(){
   return(
@@ -102,6 +103,18 @@ function MyTabs2(){
       
     </Tab.Navigator>
   )
+} */
+
+function CloseDrawer(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Close Drawer"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+    </DrawerContentScrollView>
+  );
 }
 
 const Drawer = createDrawerNavigator();
@@ -109,14 +122,14 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator
-    screenOptions={{
-      drawerActiveTintColor:"tomato"
-    }}
-      // useLegacyImplementation
-      // drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        drawerActiveTintColor: "tomato",
+      }}
+      useLegacyImplementation
+      drawerContent={(props) => <CloseDrawer {...props} />}
     >
-      <Drawer.Screen name="Home" component={MyTabs} />
-      <Drawer.Screen name="Settings" component={MyTabs2} />
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Product" component={ProductScreen} />
     </Drawer.Navigator>
   );
 }
@@ -124,7 +137,7 @@ function MyDrawer() {
 const App = () => {
   return (
     <NavigationContainer>
-      <MyDrawer/>
+      <MyDrawer />
     </NavigationContainer>
   );
 };
