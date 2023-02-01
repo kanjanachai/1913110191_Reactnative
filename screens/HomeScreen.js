@@ -14,7 +14,7 @@ const IoniconsHeaderButton = (props) => (
   <HeaderButton
     IconComponent={Ionicons}
     iconSize={30}
-    color="black"
+    color="white"
     {...props}
   />
 );
